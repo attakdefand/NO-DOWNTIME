@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No-Downtime Service</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eaecef;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .badge {
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            text-decoration: none;
+            color: #333;
+        }
+        .badge:hover {
+            background-color: #d0d0d0;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .feature-card ul {
+            padding-left: 20px;
+        }
+        .feature-card li {
+            margin-bottom: 8px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .implemented {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .planned {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaecef;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>No-Downtime Service</h1>
+        <p class="tagline">A Rust-based web service implementing zero-downtime deployment principles for high availability</p>
+        <div class="badges">
+            <a href="https://github.com/attakdefand/NO-DOWNTIME" class="badge">GitHub Repository</a>
+            <a href="https://github.com/attakdefand/NO-DOWNTIME/blob/main/LICENSE" class="badge">MIT License</a>
+            <a href="https://github.com/attakdefand/NO-DOWNTIME/issues" class="badge">Issues</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>The No-Downtime Service is a production-ready Rust application built with <a href="https://github.com/tokio-rs/axum">Axum</a> that implements industry-standard practices for achieving zero-downtime deployments in Kubernetes environments. It follows the principles outlined in the <a href="https://github.com/attakdefand/NO-DOWNTIME/blob/main/NO-DOWNTIME.MD">No-Downtime Blueprint</a> to eliminate single points of failure, reduce blast radius, and enable fast detection and healing.</p>
+        </section>
+
+        <section>
+            <h2>Key Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>✅ Implemented Features</h3>
+                    <ul>
+                        <li>Health Checks (<code>/live</code>, <code>/ready</code> endpoints)</li>
+                        <li>Graceful Shutdown with SIGTERM handling</li>
+                        <li>Request Timeouts to prevent resource exhaustion</li>
+                        <li>Concurrency Limits to prevent service overload</li>
+                        <li>Structured Logging with tracing integration</li>
+                        <li>Secure Containerization with multi-stage Docker build</li>
+                        <li>Kubernetes Integration with zero-downtime strategies</li>
+                        <li>High Availability with pod anti-affinity</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>🔄 Planned Features</h3>
+                    <ul>
+                        <li>Circuit Breaker pattern for resilience</li>
+                        <li>Rate limiting and adaptive throttling</li>
+                        <li>Distributed tracing with OpenTelemetry</li>
+                        <li>Authentication and authorization</li>
+                        <li>Caching with stampede protection</li>
+                        <li>Metrics collection and health dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Architecture Principles</h2>
+            <p>The service implements the following zero-downtime patterns:</p>
+            <ol>
+                <li><strong>Health Probes & Self-Healing</strong> - Liveness and readiness probes with graceful shutdown</li>
+                <li><strong>Deployment Strategies</strong> - Rolling updates with zero-downtime configurations</li>
+                <li><strong>Resilience Patterns</strong> - Timeouts, concurrency limits, and backpressure</li>
+                <li><strong>Observability</strong> - Structured logging and request tracing</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Quick Start</h2>
+            <pre><code># Build the application
+cargo build --release
+
+# Or build the Docker image
+docker build -t no-downtime-service .
+
+# Run locally
+cargo run
+
+# Deploy to Kubernetes
+kubectl apply -f k8s/</code></pre>
+        </section>
+
+        <section>
+            <h2>Documentation</h2>
+            <ul>
+                <li><a href="https://github.com/attakdefand/NO-DOWNTIME/blob/main/NO-DOWNTIME.MD">No-Downtime Principles</a> - Core zero-downtime concepts and patterns</li>
+                <li><a href="https://github.com/attakdefand/NO-DOWNTIME/blob/main/PRODUCT-FEATURES.MD">Feature Implementation Status</a> - Current feature status</li>
+                <li><a href="https://github.com/attakdefand/NO-DOWNTIME/blob/main/PRODUCT-ROADMAP.MD">Product Roadmap</a> - Future development plans</li>
+                <li><a href="https://github.com/attakdefand/NO-DOWNTIME/blob/main/SECURITY-LAYER.MD">Security Implementation</a> - Security considerations</li>
+                <li><a href="https://github.com/attakdefand/NO-DOWNTIME/blob/main/IMPLEMENTATION_SUMMARY.MD">Technical Implementation</a> - Detailed technical documentation</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>No-Downtime Service &copy; 2025 | A Rust-based solution for high availability systems</p>
+        <p>Visit our <a href="https://github.com/attakdefand/NO-DOWNTIME">GitHub repository</a> for source code and documentation</p>
+    </footer>
+</body>
+</html>
