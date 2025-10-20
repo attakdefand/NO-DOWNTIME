@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: no-downtime-service
+  labels:
+    app: no-downtime-service
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # Zero-downtime deployment settings
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: no-downtime-service
+  template:
+    metadata:
+      labels:
+        app: no-downtime-service
+    spec:
+      # Ensure pods are spread across nodes for redundancy
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - no-downtime-service
+              topologyKey: kubernetes.io/hostname
+      containers:
+      - name: no-downtime-service
+        image: no-downtime-service:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: APP_BIND_ADDRESS
+          value: "0.0.0.0:3000"
+        # Resource limits to prevent noisy neighbors
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        # Health probes for self-healing
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        # Graceful shutdown hook
+        lifecycle:
+          preStop:
+            exec:
+              command: ["sleep", "10"]
