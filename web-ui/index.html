@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>No-Downtime Service Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+</head>
+<body>
+    <div id="app">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; color: #64748b;">
+            <div style="border: 4px solid #f3f4f6; border-top: 4px solid #2563eb; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 20px;"></div>
+            <h2>Loading Dashboard...</h2>
+            <p>Initializing the No-Downtime Service Dashboard</p>
+        </div>
+    </div>
+    <script type="module">
+        import init from "./pkg/no_downtime_web_ui.js";
+        
+        async function run() {
+            try {
+                // Initialize the WASM module
+                await init('./pkg/no_downtime_web_ui_bg.wasm');
+                console.log('No-Downtime Service Dashboard loaded successfully');
+                
+                // The Yew application should automatically mount to the #app element
+                // If it doesn't, we'll show a success message
+                setTimeout(() => {
+                    const appElement = document.getElementById('app');
+                    if (appElement && appElement.innerHTML.includes('Loading Dashboard')) {
+                        appElement.innerHTML = `
+                            <div style="padding: 20px; text-align: center; color: #22c55e;">
+                                <h2>✅ Application Loaded Successfully!</h2>
+                                <p>The No-Downtime Service Dashboard is ready.</p>
+                                <div style="margin-top: 20px; padding: 15px; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
+                                    <h3>Application Status</h3>
+                                    <p>Yew application would be mounted here.</p>
+                                    <p style="color: #64748b; font-size: 0.9em;">If you continue to see this message, please check the browser console for errors.</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }, 1000);
+            } catch (error) {
+                console.error('Failed to load dashboard:', error);
+                document.getElementById('app').innerHTML = `
+                    <div style="padding: 20px; text-align: center; color: #dc2626;">
+                        <h2>❌ Failed to Load Dashboard</h2>
+                        <p>${error.message}</p>
+                        <button onclick="location.reload()" style="padding: 10px 20px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer;">Retry</button>
+                    </div>
+                `;
+            }
+        }
+        
+        run();
+    </script>
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

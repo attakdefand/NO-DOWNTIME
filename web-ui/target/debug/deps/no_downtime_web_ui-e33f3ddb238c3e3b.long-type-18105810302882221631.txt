@@ -1,0 +1,1 @@
+yew::Callback<Event>: IntoEventCallback<InputEvent>
