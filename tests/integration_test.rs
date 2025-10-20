@@ -2,12 +2,18 @@ use axum::{
     body::Body,
     http::{Request, StatusCode},
 };
-use no_downtime_service::server;
+use no_downtime_service::{auth::AuthState, server};
 use tower::ServiceExt;
 
 #[tokio::test]
 async fn test_service_endpoints() {
-    let app = server::create_app();
+    // Create a simple auth state for testing (using HMAC for simplicity)
+    let auth_state = AuthState::new(
+        jsonwebtoken::EncodingKey::from_secret("secret".as_ref()),
+        jsonwebtoken::DecodingKey::from_secret("secret".as_ref()),
+        "test-issuer".to_string(),
+    );
+    let app = server::create_app().with_state(auth_state);
 
     // Test root endpoint
     let response = app.clone()

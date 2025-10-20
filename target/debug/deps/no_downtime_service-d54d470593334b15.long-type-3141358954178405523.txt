@@ -1,0 +1,1 @@
+{async fn body of cache::Cache<std::string::String, i32>::get_or_compute<{closure@src\cache.rs:325:73: 325:75}, {async block@src\cache.rs:325:76: 325:81}>()}

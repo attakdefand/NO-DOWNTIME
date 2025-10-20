@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["live_handler","ready_handler","set_alive","set_not_alive","set_not_ready","set_ready"],"struct":["HealthCheck","HealthStatus"]};

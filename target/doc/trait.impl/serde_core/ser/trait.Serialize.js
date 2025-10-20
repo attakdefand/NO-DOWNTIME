@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["no_downtime_service",[["impl <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html\" title=\"trait serde_core::ser::Serialize\">Serialize</a> for <a class=\"struct\" href=\"no_downtime_service/auth/struct.Claims.html\" title=\"struct no_downtime_service::auth::Claims\">Claims</a>"],["impl <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html\" title=\"trait serde_core::ser::Serialize\">Serialize</a> for <a class=\"struct\" href=\"no_downtime_service/health/struct.HealthCheck.html\" title=\"struct no_downtime_service::health::HealthCheck\">HealthCheck</a>"],["impl <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html\" title=\"trait serde_core::ser::Serialize\">Serialize</a> for <a class=\"struct\" href=\"no_downtime_service/health/struct.HealthStatus.html\" title=\"struct no_downtime_service::health::HealthStatus\">HealthStatus</a>"],["impl <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html\" title=\"trait serde_core::ser::Serialize\">Serialize</a> for <a class=\"struct\" href=\"no_downtime_service/oauth2/struct.AccessTokenResponse.html\" title=\"struct no_downtime_service::oauth2::AccessTokenResponse\">AccessTokenResponse</a>"],["impl <a class=\"trait\" href=\"https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html\" title=\"trait serde_core::ser::Serialize\">Serialize</a> for <a class=\"struct\" href=\"no_downtime_service/oauth2/struct.Claims.html\" title=\"struct no_downtime_service::oauth2::Claims\">Claims</a>"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1633]}

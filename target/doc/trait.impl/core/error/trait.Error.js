@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["no_downtime_service",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/error/trait.Error.html\" title=\"trait core::error::Error\">Error</a> for <a class=\"enum\" href=\"no_downtime_service/oauth2/enum.OAuth2Error.html\" title=\"enum no_downtime_service::oauth2::OAuth2Error\">OAuth2Error</a>"],["impl&lt;E&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/error/trait.Error.html\" title=\"trait core::error::Error\">Error</a> for <a class=\"enum\" href=\"no_downtime_service/circuit_breaker/enum.CircuitBreakerError.html\" title=\"enum no_downtime_service::circuit_breaker::CircuitBreakerError\">CircuitBreakerError</a>&lt;E&gt;<div class=\"where\">where\n    E: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/error/trait.Error.html\" title=\"trait core::error::Error\">Error</a> + 'static,</div>"],["impl&lt;E&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/error/trait.Error.html\" title=\"trait core::error::Error\">Error</a> for <a class=\"enum\" href=\"no_downtime_service/retry/enum.RetryError.html\" title=\"enum no_downtime_service::retry::RetryError\">RetryError</a>&lt;E&gt;<div class=\"where\">where\n    E: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/error/trait.Error.html\" title=\"trait core::error::Error\">Error</a> + 'static,</div>"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1353]}

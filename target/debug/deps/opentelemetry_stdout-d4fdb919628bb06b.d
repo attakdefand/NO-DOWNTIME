@@ -1,0 +1,9 @@
+D:\NO-DOWNTIME\target\debug\deps\opentelemetry_stdout-d4fdb919628bb06b.d: C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\lib.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\common.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\mod.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\exporter.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\transform.rs
+
+D:\NO-DOWNTIME\target\debug\deps\libopentelemetry_stdout-d4fdb919628bb06b.rmeta: C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\lib.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\common.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\mod.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\exporter.rs C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\transform.rs
+
+C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\lib.rs:
+C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\common.rs:
+C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\mod.rs:
+C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\exporter.rs:
+C:\Users\RMT\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\opentelemetry-stdout-0.1.0\src\trace\transform.rs:

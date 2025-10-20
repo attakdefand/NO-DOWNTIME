@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["no_downtime_service",[["impl&lt;S&gt; FromRequestParts&lt;S&gt; for <a class=\"struct\" href=\"no_downtime_service/auth/struct.AuthUser.html\" title=\"struct no_downtime_service::auth::AuthUser\">AuthUser</a><div class=\"where\">where\n    <a class=\"struct\" href=\"no_downtime_service/auth/struct.AuthState.html\" title=\"struct no_downtime_service::auth::AuthState\">AuthState</a>: FromRef&lt;S&gt;,\n    S: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> + <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/marker/trait.Sync.html\" title=\"trait core::marker::Sync\">Sync</a>,</div>"],["impl&lt;S&gt; FromRequestParts&lt;S&gt; for <a class=\"struct\" href=\"no_downtime_service/oauth2/struct.OAuth2User.html\" title=\"struct no_downtime_service::oauth2::OAuth2User\">OAuth2User</a><div class=\"where\">where\n    <a class=\"struct\" href=\"no_downtime_service/oauth2/struct.OAuth2State.html\" title=\"struct no_downtime_service::oauth2::OAuth2State\">OAuth2State</a>: FromRef&lt;S&gt;,\n    S: <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/marker/trait.Send.html\" title=\"trait core::marker::Send\">Send</a> + <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/marker/trait.Sync.html\" title=\"trait core::marker::Sync\">Sync</a>,</div>"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1377]}

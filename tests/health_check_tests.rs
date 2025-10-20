@@ -2,7 +2,7 @@ use axum::{
     body::{Body, to_bytes},
     http::{Request, StatusCode},
 };
-use no_downtime_service::{health, server};
+use no_downtime_service::{auth::AuthState, health, server};
 use serde_json::Value;
 use tower::ServiceExt; // for `oneshot` and `ready`
 
@@ -12,7 +12,14 @@ async fn test_liveness_probe() {
     health::set_alive();
     health::set_ready();
     
-    let app = server::create_app();
+    // Create a simple auth state for testing (using HMAC for simplicity)
+    let auth_state = AuthState::new(
+        jsonwebtoken::EncodingKey::from_secret("secret".as_ref()),
+        jsonwebtoken::DecodingKey::from_secret("secret".as_ref()),
+        "test-issuer".to_string(),
+    );
+    let app = server::create_app().with_state(auth_state);
+    
     let response = app
         .oneshot(Request::builder().uri("/live").body(Body::empty()).unwrap())
         .await
@@ -24,6 +31,10 @@ async fn test_liveness_probe() {
     let json: Value = serde_json::from_slice(&body).unwrap();
     
     assert_eq!(json["status"], "ok");
+    
+    // Reset state for other tests
+    health::set_alive();
+    health::set_ready();
 }
 
 #[tokio::test]
@@ -32,7 +43,14 @@ async fn test_readiness_probe() {
     health::set_alive();
     health::set_ready();
     
-    let app = server::create_app();
+    // Create a simple auth state for testing (using HMAC for simplicity)
+    let auth_state = AuthState::new(
+        jsonwebtoken::EncodingKey::from_secret("secret".as_ref()),
+        jsonwebtoken::DecodingKey::from_secret("secret".as_ref()),
+        "test-issuer".to_string(),
+    );
+    let app = server::create_app().with_state(auth_state);
+    
     let response = app
         .oneshot(Request::builder().uri("/ready").body(Body::empty()).unwrap())
         .await
@@ -44,6 +62,10 @@ async fn test_readiness_probe() {
     let json: Value = serde_json::from_slice(&body).unwrap();
     
     assert_eq!(json["status"], "ok");
+    
+    // Reset state for other tests
+    health::set_alive();
+    health::set_ready();
 }
 
 #[tokio::test]
@@ -55,7 +77,14 @@ async fn test_liveness_probe_failure() {
     // Test that the liveness probe returns SERVICE_UNAVAILABLE when service is not alive
     health::set_not_alive();
     
-    let app = server::create_app();
+    // Create a simple auth state for testing (using HMAC for simplicity)
+    let auth_state = AuthState::new(
+        jsonwebtoken::EncodingKey::from_secret("secret".as_ref()),
+        jsonwebtoken::DecodingKey::from_secret("secret".as_ref()),
+        "test-issuer".to_string(),
+    );
+    let app = server::create_app().with_state(auth_state);
+    
     let response = app
         .oneshot(Request::builder().uri("/live").body(Body::empty()).unwrap())
         .await
@@ -70,6 +99,7 @@ async fn test_liveness_probe_failure() {
     
     // Reset to alive state for other tests
     health::set_alive();
+    health::set_ready();
 }
 
 #[tokio::test]
@@ -81,7 +111,14 @@ async fn test_readiness_probe_failure() {
     // Test that the readiness probe returns SERVICE_UNAVAILABLE when service is not ready
     health::set_not_ready();
     
-    let app = server::create_app();
+    // Create a simple auth state for testing (using HMAC for simplicity)
+    let auth_state = AuthState::new(
+        jsonwebtoken::EncodingKey::from_secret("secret".as_ref()),
+        jsonwebtoken::DecodingKey::from_secret("secret".as_ref()),
+        "test-issuer".to_string(),
+    );
+    let app = server::create_app().with_state(auth_state);
+    
     let response = app
         .oneshot(Request::builder().uri("/ready").body(Body::empty()).unwrap())
         .await
@@ -95,5 +132,6 @@ async fn test_readiness_probe_failure() {
     assert_eq!(json["status"], "error");
     
     // Reset to ready state for other tests
+    health::set_alive();
     health::set_ready();
 }

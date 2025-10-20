@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["OAuth2Error"],"fn":["oauth2_callback_handler","oauth2_login_handler"],"struct":["AccessTokenResponse","AuthRequest","Claims","OAuth2Config","OAuth2State","OAuth2User"]};

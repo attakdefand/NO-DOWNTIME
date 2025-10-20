@@ -1,0 +1,9 @@
+(function() {
+    var implementors = Object.fromEntries([["no_downtime_service",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"no_downtime_service/cache/struct.CacheConfig.html\" title=\"struct no_downtime_service::cache::CacheConfig\">CacheConfig</a>"],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"no_downtime_service/circuit_breaker/struct.CircuitBreakerConfig.html\" title=\"struct no_downtime_service::circuit_breaker::CircuitBreakerConfig\">CircuitBreakerConfig</a>"],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"no_downtime_service/rate_limiter/struct.RateLimiterConfig.html\" title=\"struct no_downtime_service::rate_limiter::RateLimiterConfig\">RateLimiterConfig</a>"],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.90.0/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"no_downtime_service/retry/struct.RetryConfig.html\" title=\"struct no_downtime_service::retry::RetryConfig\">RetryConfig</a>"]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":57,"fragment_lengths":[1340]}

@@ -1,5 +1,13 @@
-pub mod server;
-pub mod health;
-pub mod config;
+// Core modules
+pub mod auth;
+pub mod cache;
 pub mod circuit_breaker;
+pub mod config;
+pub mod health;
 pub mod rate_limiter;
+pub mod retry;
+pub mod server;
+pub mod tracing;
+pub mod metrics;
+pub mod oauth2;
+pub mod rbac;

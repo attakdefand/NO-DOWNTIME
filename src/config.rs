@@ -7,6 +7,16 @@ pub struct Config {
     pub bind_address: SocketAddr,
     #[serde(default = "default_shutdown_timeout")]
     pub shutdown_timeout: u64,
+    /// TLS configuration (optional)
+    pub tls: Option<TlsConfig>,
+}
+
+#[derive(Debug, Deserialize, Clone)]
+pub struct TlsConfig {
+    /// Path to the TLS certificate file
+    pub cert_path: String,
+    /// Path to the TLS private key file
+    pub key_path: String,
 }
 
 impl Config {

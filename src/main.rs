@@ -1,19 +1,13 @@
 mod server;
 mod health;
 mod config;
-
-use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+mod auth;
+mod tracing;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Initialize tracing
-    tracing_subscriber::registry()
-        .with(
-            tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| "no_downtime_service=debug,tower_http=debug".into()),
-        )
-        .with(tracing_subscriber::fmt::layer())
-        .init();
+    // Initialize tracing with OpenTelemetry
+    no_downtime_service::tracing::init_tracing()?;
 
     // Load configuration
     let config = config::Config::from_env()?;
@@ -21,5 +15,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Start the server
     server::run(config).await?;
 
+    // Shutdown tracing gracefully
+    no_downtime_service::tracing::shutdown_tracing();
+    
     Ok(())
 }
